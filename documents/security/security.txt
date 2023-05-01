@@ -1,0 +1,14 @@
+https://www.youtube.com/watch?v=00-hMP2KKSs
+
+https://www.youtube.com/watch?v=qcz2jBLNOtc
+
+
+https://www.youtube.com/watch?v=xM9-FSU5MoY
+
+
+IAP
+enable IAP
+external identity
+allUsers	--> no accout
+allAuthenticatedUsers --> gmail account
+external identity: email/password

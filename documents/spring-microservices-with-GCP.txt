@@ -1,0 +1,22 @@
+spring boot -> done
+gcp	-> done
+compute engine -> done
+app engine	-> done
+containerize	-> done	
+cloud run	-> done
+k8s		-> done
+spring boot+db(cloud sql) -> done
+monitoring and logging -> done
+deployment --> done
+spring cloud  --> done
+cloud function --> done
+cicd--> done
+security --> ?	done
+
+
+explore
+iam		--> done
+monitoring	--> done
+logging		--> done
+
+

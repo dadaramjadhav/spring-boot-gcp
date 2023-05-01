@@ -1,0 +1,17 @@
+install logging agent
+curl -sSO https://dl.google.com/cloudagents/add-logging-agent-repo.sh
+sudo bash add-logging-agent-repo.sh --also-install
+sudo service google-fluentd restart
+sudo service google-fluentd status
+tail /var/log/google-fluentd/google-fluentd.log
+
+
+
+attach service account role to compute engine (Cloud Logging Service Agent,Logging Admin, Logs Writer)
+
+
+set GOOGLE_APPLICATION_CREDENTIALS=d:\ws\gcp-logging\prime-plating-376611-e8318f031919.json
+
+application.properties
+spring.cloud.gcp.project-id=my-gcp-project-id
+spring.cloud.gcp.credentials.location=file:/usr/local/key.json

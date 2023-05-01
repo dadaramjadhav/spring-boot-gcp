@@ -1,0 +1,22 @@
+sudo yum install git -y
+sudo yum install java-1.8.0-openjdk-devel -y
+sudo yum install wget -y
+wget https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.tar.gz -P /tmp
+sudo tar xf /tmp/apache-maven-3.9.1-bin.tar.gz -C /opt
+sudo ln -s /opt/apache-maven-3.9.1 /opt/maven
+export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
+export M2_HOME=/opt/maven
+export MAVEN_HOME=/opt/maven
+export PATH=${M2_HOME}/bin:${PATH}
+
+curl -sSO https://dl.google.com/cloudagents/add-logging-agent-repo.sh
+sudo bash add-logging-agent-repo.sh --also-install
+sudo service google-fluentd restart
+sudo service google-fluentd status
+export PROJECT_ID=prime-plating-376611
+git clone https://github.com/dadaramjadhav/5001-spring-boot-compute-engine-deployment.git
+cd 5001-spring-boot-compute-engine-deployment
+mvn clean install
+mvn spring-boot:run
+
+

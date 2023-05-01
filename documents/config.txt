@@ -1,0 +1,1 @@
+https://blog.allegro.tech/2020/01/spring-boot-services-configuration-on-gcp.html

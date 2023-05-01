@@ -1,0 +1,213 @@
+ccswagger: '2.0'
+info:
+  version: 1.0.6
+  title: Employee API
+  contact: {}
+host: empapp-api.apigateway.prime-plating-376611.cloud.goog
+basePath: /
+security:
+  - api_key: []
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+x-google-backend:
+  address: >-
+    https://empapp-ftbznnmqka-uc.a.run.app
+paths:
+  /employee/{empId}:
+    get:
+      description: ''
+      summary: getEmployeeId
+      tags:
+      - employee-controller
+      operationId: getEmployeeId
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: empId
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            default: ''
+          headers: {}
+    put:
+      description: ''
+      summary: updateEmployee
+      tags:
+      - employee-controller
+      operationId: updateEmployee
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: empId
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: Content-Type
+        in: header
+        required: false
+        enum:
+        - application/json
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/EmployeeModel'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            default: ''
+          headers: {}
+    delete:
+      description: ''
+      summary: deleteEmployeeById
+      tags:
+      - employee-controller
+      operationId: deleteEmployeeById
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: empId
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            default: ''
+          headers: {}
+  /employee:
+    get:
+      description: ''
+      summary: getAllEmployees
+      tags:
+      - employee-controller
+      operationId: getAllEmployees
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            default: ''
+          headers: {}
+    post:
+      description: ''
+      summary: addEmployee
+      tags:
+      - employee-controller
+      operationId: addEmployee
+      deprecated: false
+      produces:
+      - text/plain
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        enum:
+        - application/json
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/EmployeeModel'
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+            default: ''
+          headers: {}
+  /welcome:
+    get:
+      description: ''
+      summary: welcome
+      tags:
+      - employee-controller
+      operationId: welcome
+      deprecated: false
+      produces:
+      - text/plain
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+            default: ''
+          headers: {}
+  /:
+    get:
+      description: ''
+      summary: welcome_1
+      tags:
+      - employee-controller
+      operationId: welcome_1
+      deprecated: false
+      produces:
+      - text/plain
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: string
+            default: ''
+          headers: {}
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: key
+    in: query
+definitions:
+  EmployeeModel:
+    title: EmployeeModel
+    type: object
+    properties:
+      empId:
+        type: integer
+        format: int32
+      empName:
+        type: string
+      departmentCode:
+        type: string
+      salary:
+        type: integer
+        format: int32
+tags:
+- name: employee-controller
+  description: ''

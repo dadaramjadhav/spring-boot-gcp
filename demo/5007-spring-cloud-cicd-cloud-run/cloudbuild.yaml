@@ -1,0 +1,22 @@
+steps:
+- name: 'maven'
+  entrypoint: 'mvn'
+  args: ['clean', 'install']
+  env:
+    - 'PROJECT_ID=$PROJECT_ID'
+    - 'PROJECT_NUMBER=$PROJECT_NUMBER'
+#build image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/$PROJECT_ID/cicd-empapp-cloud-run', '.']
+  
+ #push image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/$PROJECT_ID/cicd-empapp-cloud-run']
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'gcloud'
+  args: ['run', 'deploy', 'empapp-service', '--image', 'gcr.io/$PROJECT_ID/cicd-empapp-cloud-run', '--set-env-vars', 'PROJECT_ID=$PROJECT_ID,PROJECT_NUMBER=$PROJECT_NUMBER,LOG_LEVEL=DEBUG',  '--region', 'us-central1', '--service-account', 'cloud-run-empapp-sa@$PROJECT_ID.iam.gserviceaccount.com', '--allow-unauthenticated']
+
+
+images:
+ - gcr.io/$PROJECT_ID/cicd-empapp-cloud-run

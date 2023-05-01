@@ -1,0 +1,13 @@
+enable api
+Stackdriver Monitoring API is enabled.
+
+
+
+to see dashboard 
+https://console.cloud.google.com/monitoring/metrics-explorer?project=swift-adviser-346416&pageState=%7B%22xyChart%22:%7B%22dataSets%22:%5B%5D,%22options%22:%7B%22mode%22:%22COLOR%22%7D,%22constantLines%22:%5B%5D,%22timeshiftDuration%22:%220s%22%7D,%22isAutoRefresh%22:true,%22timeSelection%22:%7B%22timeRange%22:%221h%22%7D%7D
+
+
+permission
+Monitoring Metric Writer
+
+working

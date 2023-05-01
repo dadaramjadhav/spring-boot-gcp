@@ -1,0 +1,7 @@
+#default configuration without scaling
+runtime: java11
+instance_class: F2
+env_variables:
+  PROJECT_ID: eng-braid-385315
+  PROJECT_NUMBER: 552334120435
+  LOG_LEVEL: DEBUG

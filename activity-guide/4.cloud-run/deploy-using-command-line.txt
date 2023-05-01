@@ -1,0 +1,5 @@
+execute following command to deploy spring boot application in cloud run
+change values for image, region, PROJECT_ID, PROJECT_NUMBER, LOG_LEVEL, service-account as applicable
+
+
+gcloud run deploy empapp --image=us-central1-docker.pkg.dev/spring-cloud-gcp-384514/emp-repo/empapp-image:latest --region us-central1 --set-env-vars PROJECT_ID=spring-cloud-gcp-384514,PROJECT_NUMBER=639332776206,LOG_LEVEL=DEBUG  --service-account cloud-run-empapp-sa@spring-cloud-gcp-384514.iam.gserviceaccount.com --allow-unauthenticated

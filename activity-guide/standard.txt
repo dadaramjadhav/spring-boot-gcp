@@ -1,0 +1,8 @@
+1. enable api
+2. create service account with desired roles
+3. create service
+4. run application
+5. load balancer
+6. security
+7. api gateway
+8. 

@@ -1,0 +1,52 @@
+------------------------------------------------------------------------------------------------------sudo yum install git -y
+------------------------------------------------------------------------------------------------------
+sudo yum install java-1.8.0-openjdk-devel -y
+
+install maven
+sudo yum install wget -y
+wget https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.tar.gz -P /tmp
+sudo tar xf /tmp/apache-maven-3.9.1-bin.tar.gz -C /opt
+sudo ln -s /opt/apache-maven-3.9.1 /opt/maven
+sudo vi /etc/profile.d/maven.sh
+export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
+export M2_HOME=/opt/maven
+export MAVEN_HOME=/opt/maven
+export PATH=${M2_HOME}/bin:${PATH}
+
+sudo chmod +x /etc/profile.d/maven.sh
+source /etc/profile.d/maven.sh
+mvn -version
+======================================================================
+service account permissions
+
+Cloud Logging Service Agent
+Cloud SQL Client
+Logging Admin
+Logs Writer
+Secret Manager Admin
+
+
+narrower permission
+Cloud Logging Service Agent
+Cloud SQL Client
+Logging Admin
+Logs Writer
+Secret Manager Admin /  Secret Manager Secret Accessor
+==========================================================================
+install logging agent
+curl -sSO https://dl.google.com/cloudagents/add-logging-agent-repo.sh
+sudo bash add-logging-agent-repo.sh --also-install
+sudo service google-fluentd restart
+sudo service google-fluentd status
+tail /var/log/google-fluentd/google-fluentd.log
+
+
+
+attach service account role to compute engine (Cloud Logging Service Agent,Logging Admin, Logs Writer)
+
+
+set GOOGLE_APPLICATION_CREDENTIALS=d:\ws\gcp-logging\prime-plating-376611-e8318f031919.json
+
+application.properties
+spring.cloud.gcp.project-id=my-gcp-project-id
+spring.cloud.gcp.credentials.location=file:/usr/local/key.json

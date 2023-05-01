@@ -1,0 +1,41 @@
+install mysql in centos
+curl -sSLO https://dev.mysql.com/get/mysql80-community-release-el7-5.noarch.rpm
+md5sum mysql80-community-release-el7-5.noarch.rpm
+sudo rpm -ivh mysql80-community-release-el7-5.noarch.rpm
+sudo yum install mysql-server -y
+sudo systemctl start mysqld
+sudo systemctl status mysqld
+sudo systemctl enable mysqld
+sudo grep 'temporary password' /var/log/mysqld.log
+
+allow public access: 
+https://linuxconfig.org/mysql-allow-root-remote-access#:~:text=To%20allow%20remote%20connections%20to%20the%20root%20account%20in%20MySQL,remote%20connections%20to%20the%20account.
+
+sudo mysql_secure_installation
+Disallow root login remotely?	no
+
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost';
+UPDATE mysql.user SET host='%' WHERE user='root';
+sudo systemctl restart mysqld
+
+----------------------------------------------------------------------------------------------------------------
+sudo yum install git -y
+
+----------------------------------------------------------------------------------------------------------------
+sudo yum install java-1.8.0-openjdk-devel -y
+
+
+install maven
+sudo yum install wget -y
+wget https://dlcdn.apache.org/maven/maven-3/3.9.1/binaries/apache-maven-3.9.1-bin.tar.gz -P /tmp
+sudo tar xf /tmp/apache-maven-3.9.1-bin.tar.gz -C /opt
+sudo ln -s /opt/apache-maven-3.9.1 /opt/maven
+sudo vi /etc/profile.d/maven.sh
+export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
+export M2_HOME=/opt/maven
+export MAVEN_HOME=/opt/maven
+export PATH=${M2_HOME}/bin:${PATH}
+
+sudo chmod +x /etc/profile.d/maven.sh
+source /etc/profile.d/maven.sh
+mvn -version

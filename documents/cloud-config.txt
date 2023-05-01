@@ -1,0 +1,40 @@
+enable api 
+Cloud Runtime Configuration API
+
+
+create config
+gcloud beta runtime-config configs create empapp_default
+
+gcloud beta runtime-config configs variables set  PROJECTID prime-plating-376611  --config-name empapp_default
+
+gcloud beta runtime-config configs variables set myapp.feature-x-enabled true --config-name empapp_default
+
+-------------------------------------------------------------------------------------------
+bootstrap.properties
+spring.cloud.gcp.config.enabled=true
+spring.cloud.gcp.config.name=empapp
+
+#default profile = default
+#spring.cloud.gcp.config.profile=prod
+
+-----------------------------------------------------------------------------------------
+dependancies
+<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+		</repository>
+	</repositories>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-gcp-starter-config</artifactId>
+			<version>1.1.0.M3</version>
+		</dependency>
+-----------------------------------------------------------------------------------------
+Parameter 2 of constructor in com.google.cloud.spring.autoconfigure.metrics.GcpStackdriverMetricsAutoConfiguration required a bean of type 'com.google.cloud.spring.core.GcpProjectIdProvider' that could not be found.
+
+
+Consider defining a bean of type 'com.google.cloud.spring.core.GcpProjectIdProvider' in your configuration.
+

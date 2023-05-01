@@ -1,0 +1,7 @@
+Scenario 1: You have a cluster of API Gateways
+
+User ---> Load Balancer (provided by Cloud Providers like AWS or your own) ---> API Gateway Cluster ---> Service Discovery Agent (like eureka) ---> Microservice A ---> Client Side Load Balancer ---> Microservice B
+
+Scenario 2: You have a single API Gateway
+
+User ---> API Gateway ---> Service Discovery Agent (like Eureka) ---> Microservice A ---> Client Side Load Balancer -> Microservice B

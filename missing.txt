@@ -1,0 +1,12 @@
+whether to use load balancer or not
+whether to use api gateway or not
+deployment strategies in k8s
+cloud functions
+
+
+
+
+
+
+
+

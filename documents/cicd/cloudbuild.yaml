@@ -1,0 +1,25 @@
+steps:
+- name: 'maven'
+  entrypoint: 'mvn'
+  args: ['clean', 'install']
+
+#deploy application to app engine
+#- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+#  entrypoint: 'gcloud'
+#  args: ['app', 'deploy']
+
+#build image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/prime-plating-376611/cicd-repo', '.']
+  
+ #push image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/prime-plating-376611/cicd-repo']
+  
+
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: 'gcloud'
+  args: ['run', 'deploy', 'dm123', '--image', 'gcr.io/prime-plating-376611/cicd-repo', '--region', 'us-central1', '--allow-unauthenticated']
+
+images:
+ - gcr.io/prime-plating-376611/cicd-repo
